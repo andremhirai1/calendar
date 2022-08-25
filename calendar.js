@@ -1,19 +1,4 @@
 class Calendar {
-    months = [
-        "Janeiro",
-        "Fevereiro",
-        "Março",
-        "Abril",
-        "Maio",
-        "Junho",
-        "Julho",
-        "Agosto",
-        "Setembro",
-        "Outubro",
-        "Novembro",
-        "Dezembro"
-    ];
-
     weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
 
     constructor(className, options) {
@@ -102,6 +87,14 @@ class Calendar {
     }
 
     renderCalendarMonth(_header) {
+        this.months = [];
+
+        for(let month = 0;month < 12; month++){
+            this.months = [...this.months,new Date(2000, month, 1).toLocaleDateString('default', {
+                month: 'long',
+              })];
+        }
+
         const _span = document.createElement("span");
         _span.innerHTML += this.months[this.currentMonth];
         _header.appendChild(_span);
@@ -130,10 +123,6 @@ class Calendar {
         _body.appendChild(_divWeekDays);
         _body.appendChild(_divDays);
         this.weekdays = _divDays;
-    }
-
-    renderDays() {
-
     }
 
     changeSpacing() {
