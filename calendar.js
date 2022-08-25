@@ -1,5 +1,4 @@
 class Calendar {
-    weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
 
     constructor(className, options) {
         this.calendar = document.querySelector(className);
@@ -20,7 +19,7 @@ class Calendar {
         let days = "";
 
         this.headerMonth.innerText = `${this.months[this.currentMonth]}/${this.currentYear}`;
-        this.weekdays.innerHTML = "";
+        this.days.innerHTML = "";
 
 
         for (let count = firstDayIndex; count > 0; count--) {
@@ -39,7 +38,7 @@ class Calendar {
             days += `<div class="next-date">${count}</div>`;
         }
 
-        this.weekdays.innerHTML = days;
+        this.days.innerHTML = days;
 
         this.changeSpacing();
     }
@@ -112,17 +111,24 @@ class Calendar {
     renderWeekDays(_body) {
         const _divWeekDays = document.createElement("div");
         const _divDays = document.createElement("div");
+        this.weekdays = [];
 
         _divWeekDays.classList.add("calendar-weekdays");
         _divDays.classList.add("calendar-days");
 
+        for(let day = 0;day < 7; day++){
+            //Random month and year just to get the order
+            this.weekdays = [...this.weekdays,new Date(2002, 3, day).toLocaleDateString('default', {
+                weekday: 'narrow',
+              })];
+        }
         for (const day of this.weekdays) {
             _divWeekDays.innerHTML += `<div>${day}</div>`
         }
 
         _body.appendChild(_divWeekDays);
         _body.appendChild(_divDays);
-        this.weekdays = _divDays;
+        this.days = _divDays;
     }
 
     changeSpacing() {
