@@ -1,7 +1,7 @@
 Para fazer a integração do calendário, siga os seguintes passos:
 
 - Faça o import do script para onde deseja utilizar
-  <a href="https://unpkg.com/@andremhirai1/calendar@1.3.4/calendar.js">https://unpkg.com/@andremhirai1/calendar@1.3.4/calendar.js</a>
+  <a href="https://unpkg.com/@andremhirai1/calendar@1.5.1/calendar.js">https://unpkg.com/@andremhirai1/calendar@1.5.1/calendar.js</a>
 - Crie uma div com uma classe identificadora. 
   ```<div class="calendar"> </div>```
 - Instancie um objeto dessa forma:
