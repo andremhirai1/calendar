@@ -1,6 +1,10 @@
 class Calendar {
 
-    constructor(className, options) {
+    constructor(className, options = {}) {
+        this.options = options;
+        this.options.url = options.url || "";
+        this.options.parameters = { "month": options.parameters.month || "month", "year": options.parameters.year || "year" };
+        console.log(this.options.parameters)
         this.calendar = document.querySelector(className);
         this.currentMonth = new Date().getMonth();
         this.currentYear = new Date().getFullYear();
@@ -8,6 +12,7 @@ class Calendar {
         this.renderBody();
         this.renderCalendar();
         this.changeSpacing();
+
     }
 
     renderCalendar() {
@@ -61,11 +66,7 @@ class Calendar {
                                   </svg>`;
         _prevButton.setAttribute("id", "calendar-prev-button");
 
-        _prevButton.addEventListener("click", function () {
-            _calendar.currentMonth = _calendar.currentMonth == 0 ? 11 : _calendar.currentMonth - 1;
-            _calendar.currentYear = _calendar.currentMonth == 0 ? _calendar.currentYear - 1 : _calendar.currentYear;
-            _calendar.renderCalendar();
-        });
+        _prevButton.addEventListener("click", () => _calendar.onClickHandler("prev"));
         _header.appendChild(_prevButton);
     }
 
@@ -77,21 +78,17 @@ class Calendar {
                                     <path d="M0.624931 8.89628L4.06243 4.83364L0.624931 0.770996" stroke="black" stroke-width="1.09292" />
                                   </svg>`;
         _nextButton.setAttribute("id", "calendar-next-button");
-        _nextButton.addEventListener("click", function () {
-            _calendar.currentMonth = _calendar.currentMonth == 11 ? 0 : _calendar.currentMonth + 1;
-            _calendar.currentYear = _calendar.currentMonth == 11 ? _calendar.currentYear + 1 : _calendar.currentYear;
-            _calendar.renderCalendar();
-        });
+        _nextButton.addEventListener("click", () => _calendar.onClickHandler("next"));
         _header.appendChild(_nextButton);
     }
 
     renderCalendarMonth(_header) {
         this.months = [];
 
-        for(let month = 0;month < 12; month++){
-            this.months = [...this.months,new Date(2000, month, 1).toLocaleDateString('default', {
+        for (let month = 0; month < 12; month++) {
+            this.months = [...this.months, new Date(2000, month, 1).toLocaleDateString('default', {
                 month: 'long',
-              })];
+            })];
         }
 
         const _span = document.createElement("span");
@@ -116,11 +113,11 @@ class Calendar {
         _divWeekDays.classList.add("calendar-weekdays");
         _divDays.classList.add("calendar-days");
 
-        for(let day = 0;day < 7; day++){
+        for (let day = 0; day < 7; day++) {
             //Random month and year just to get the order
-            this.weekdays = [...this.weekdays,new Date(2002, 3, day).toLocaleDateString('default', {
+            this.weekdays = [...this.weekdays, new Date(2002, 3, day).toLocaleDateString('default', {
                 weekday: 'narrow',
-              })];
+            })];
         }
         for (const day of this.weekdays) {
             _divWeekDays.innerHTML += `<div>${day}</div>`
@@ -135,15 +132,31 @@ class Calendar {
         const _calendar = this;
         const weekdays = this.calendar.querySelectorAll(".calendar-weekdays div");
         const days = this.calendar.querySelectorAll(".calendar-days div");
-        
-      
+
+
         weekdays.forEach(function (weekday) {
-          weekday.style.minWidth = (_calendar.calendar.offsetWidth / 7 - 10) + "px";
+            weekday.style.minWidth = (_calendar.calendar.offsetWidth / 7 - 10) + "px";
         });
-      
+
         days.forEach(function (day) {
-          day.style.minWidth = (_calendar.calendar.offsetWidth / 7 - 10) + "px";
+            day.style.minWidth = (_calendar.calendar.offsetWidth / 7 - 10) + "px";
         });
-      }
+    }
+
+    async onClickHandler(type) {
+        if (type === "prev") {
+            this.currentMonth = this.currentMonth == 0 ? 11 : this.currentMonth - 1;
+            this.currentYear = this.currentMonth == 0 ? this.currentYear - 1 : this.currentYear;
+        } else if (type === "next") {
+            this.currentMonth = this.currentMonth == 11 ? 0 : this.currentMonth + 1;
+            this.currentYear = this.currentMonth == 11 ? this.currentYear + 1 : this.currentYear;
+        }
+
+        if(this.options.url){
+            const response = await fetch(`${this.options.url}?${this.options.parameters.month}=${this.currentMonth+1}&${this.options.parameters.year}=${this.currentYear}`);
+        }
+
+        this.renderCalendar();
+    }
 
 }
