@@ -14,6 +14,7 @@ class Calendar {
         this.attachListeners = this.attachListeners.bind(this);
         this.changeSpacing = this.changeSpacing.bind(this);
         this.attachListeners();
+        this.events = [];
     }
 
     renderCalendar() {
@@ -45,6 +46,10 @@ class Calendar {
         }
 
         this.days.innerHTML = days;
+
+        if(this.events?.length > 0) {
+            checkItemsWithEvents(lastDay);
+        }
 
         this.changeSpacing();
     }
@@ -81,6 +86,23 @@ class Calendar {
         _nextButton.setAttribute("id", "calendar-next-button");
         _nextButton.addEventListener("click", () => _calendar.onClickHandler("next"));
         _header.appendChild(_nextButton);
+    }
+
+    async onClickHandler(type) {
+        if (type === "prev") {
+            this.currentMonth = this.currentMonth == 0 ? 11 : this.currentMonth - 1;
+            this.currentYear = this.currentMonth == 0 ? this.currentYear - 1 : this.currentYear;
+        } else if (type === "next") {
+            this.currentMonth = this.currentMonth == 11 ? 0 : this.currentMonth + 1;
+            this.currentYear = this.currentMonth == 11 ? this.currentYear + 1 : this.currentYear;
+        }
+
+        if (this.options.url) {
+            const response = await fetch(`${this.options.url}?${this.options.parameters.month}=${this.currentMonth + 1}&${this.options.parameters.year}=${this.currentYear}`);
+            this.events = response;
+        }
+
+        this.renderCalendar();
     }
 
     renderCalendarMonth(_header) {
@@ -144,24 +166,29 @@ class Calendar {
         });
     }
 
-    async onClickHandler(type) {
-        if (type === "prev") {
-            this.currentMonth = this.currentMonth == 0 ? 11 : this.currentMonth - 1;
-            this.currentYear = this.currentMonth == 0 ? this.currentYear - 1 : this.currentYear;
-        } else if (type === "next") {
-            this.currentMonth = this.currentMonth == 11 ? 0 : this.currentMonth + 1;
-            this.currentYear = this.currentMonth == 11 ? this.currentYear + 1 : this.currentYear;
-        }
-
-        if(this.options.url){
-            const response = await fetch(`${this.options.url}?${this.options.parameters.month}=${this.currentMonth+1}&${this.options.parameters.year}=${this.currentYear}`);
-        }
-
-        this.renderCalendar();
-    }
-
     attachListeners() {
         window.addEventListener("resize", this.changeSpacing);
+    }
+
+    checkItemsWithEvents(lastDay) {
+        for (let count = 1; count <= lastDay; count++) {
+            let itemWithEvent = itensEvents.find((item) => {
+                if (item.day == count && item.month == currentMonth + 1 && item.year == currentYear)
+                    return item;
+            });
+
+            if (itemWithEvent) {
+                let dayWithEvent = document.querySelector(`#date_${count}`);
+                if (!dayWithEvent.classList.contains('today')) {
+                    dayWithEvent.classList.add('next-event');
+                }
+                dayWithEvent.style.cursor = 'pointer';
+                // dayWithEvent.dataset.events = JSON.stringify(itemWithEvent.calendarItemList);
+                // dayWithEvent.addEventListener('click', function () {
+                //     showModal(this.dataset.events, count);
+                // });
+            }
+        }
     }
 
 }
