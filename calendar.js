@@ -3,6 +3,7 @@ class Calendar {
     constructor(className, options = {}) {
         this.options = options;
         this.options.url = options.url || "";
+        this.options.parameters = {};
         this.options.parameters = { "month": options.parameters.month || "month", "year": options.parameters.year || "year" };
         this.calendar = document.querySelector(className);
         this.currentMonth = new Date().getMonth();

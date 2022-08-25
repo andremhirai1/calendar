@@ -1,10 +1,11 @@
 {
   "name": "@andremhirai1/calendar",
-  "version": "1.2.1",
+  "version": "1.4.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "main": "calendar.js",
   "author": "",
   "license": "ISC",
   "repository": {
