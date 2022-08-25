@@ -1,11 +1,10 @@
 {
   "name": "@andremhirai1/calendar",
-  "version": "1.4.1",
-  "main": "index.js",
+  "version": "1.5.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "calendar.js",
+  "main": "dist/js/Calendar.js",
   "author": "",
   "license": "ISC",
   "repository": {
@@ -16,5 +15,9 @@
     "url": "https://github.com/andremhirai1/calendar/issues"
   },
   "homepage": "https://github.com/andremhirai1/calendar#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-terser": "^2.1.0"
+  }
 }
