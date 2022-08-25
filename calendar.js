@@ -4,7 +4,6 @@ class Calendar {
         this.options = options;
         this.options.url = options.url || "";
         this.options.parameters = { "month": options.parameters.month || "month", "year": options.parameters.year || "year" };
-        console.log(this.options.parameters)
         this.calendar = document.querySelector(className);
         this.currentMonth = new Date().getMonth();
         this.currentYear = new Date().getFullYear();
@@ -12,7 +11,9 @@ class Calendar {
         this.renderBody();
         this.renderCalendar();
         this.changeSpacing();
-
+        this.attachListeners = this.attachListeners.bind(this);
+        this.changeSpacing = this.changeSpacing.bind(this);
+        this.attachListeners();
     }
 
     renderCalendar() {
@@ -157,6 +158,10 @@ class Calendar {
         }
 
         this.renderCalendar();
+    }
+
+    attachListeners() {
+        window.addEventListener("resize", this.changeSpacing);
     }
 
 }
