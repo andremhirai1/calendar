@@ -77,11 +77,11 @@
     
 }
 
-.mpsp_modal_calendar {
+.modal-calendar {
     display: none;
 }
 
-.mpsp_modal_calendar>div:first-child {
+.modal-calendar>div:first-child {
     position: fixed;
     z-index: 1001;
     top: 0;
@@ -93,7 +93,7 @@
 }
 
 
-.mpsp_modal_calendar>div:last-child {
+.modal-calendar>div:last-child {
     background: #fff;
     border-radius: 10px;
     z-index: 1001;
@@ -104,49 +104,49 @@
     min-width: 500px;
 }
 
-.mpsp_modal_calendar .modal-header {
+.modal-calendar .modal-header {
     height: 3rem;
 }
 
-.mpsp_modal_calendar .modal-body {
+.modal-calendar .modal-body {
     max-height: 400px;
     padding: 10px 23px 20px 23px;
 }
 
-.mpsp_modal_calendar .modal-body ul {
+.modal-calendar .modal-body ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.mpsp_modal_calendar .modal-body ul li {
+.modal-calendar .modal-body ul li {
     padding: 15px 0;
     border-bottom: solid 1px #ececec;
 }
 
-.mpsp_modal_calendar .modal-body ul li:first-child {
+.modal-calendar .modal-body ul li:first-child {
     padding-top: 0;
 }
 
-.mpsp_modal_calendar .modal-body ul li:last-child {
+.modal-calendar .modal-body ul li:last-child {
     padding-bottom: 0;
 }
 
-.mpsp_modal_calendar .modal-body ul li:last-child {
+.modal-calendar .modal-body ul li:last-child {
     border: none;
 }
 
-.mpsp_modal_calendar .modal-body ul li strong {
+.modal-calendar .modal-body ul li strong {
     font-size: 0.875rem;
 }
 
-.mpsp_modal_calendar .modal-body ul li .tags {
+.modal-calendar .modal-body ul li .tags {
     display: flex;
     flex-wrap: wrap;
     margin-top: 8px;
 }
 
-.mpsp_modal_calendar .modal-body ul li .tags span {
+.modal-calendar .modal-body ul li .tags span {
     display: block;
     background: #F2F3F5;
     border-radius: 4px;

@@ -5,6 +5,7 @@ class Calendar {
         this.options.url = options.url || "";
         this.options.parameters = {};
         this.options.parameters = { "month": options.parameters.month || "month", "year": options.parameters.year || "year" };
+        this.options.modal = options.modal ? this.renderModal() : false;
         this.calendar = document.querySelector(className);
         this.currentMonth = new Date().getMonth();
         this.currentYear = new Date().getFullYear();
@@ -91,11 +92,11 @@ class Calendar {
 
     async onClickHandler(type) {
         if (type === "prev") {
-            this.currentMonth = this.currentMonth == 0 ? 11 : this.currentMonth - 1;
             this.currentYear = this.currentMonth == 0 ? this.currentYear - 1 : this.currentYear;
+            this.currentMonth = this.currentMonth == 0 ? 11 : this.currentMonth - 1;
         } else if (type === "next") {
-            this.currentMonth = this.currentMonth == 11 ? 0 : this.currentMonth + 1;
             this.currentYear = this.currentMonth == 11 ? this.currentYear + 1 : this.currentYear;
+            this.currentMonth = this.currentMonth == 11 ? 0 : this.currentMonth + 1;
         }
 
         if (this.options.url) {
@@ -190,6 +191,17 @@ class Calendar {
                 // });
             }
         }
+    }
+
+    renderModal(){
+        const _modal = document.createElement("div");
+        const _modalfirstDiv = document.createElement("div");
+        const _modalSecondDiv = document.createElement("div");
+
+        _modal.classList.add("calendar-modal");
+        _modal.appendChild(_modalfirstDiv);
+        _modalSecondDiv
+        _modal.appendChild(_modalSecondDiv);
     }
 
 }
