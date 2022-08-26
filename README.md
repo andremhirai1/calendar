@@ -1,7 +1,9 @@
 Para fazer a integração do calendário, siga os seguintes passos:
 
+- Exemplo no codepen: <a href="https://codepen.io/andremhirai/pen/RwMmdoE">Clique aqui</a>
+
 - Faça o import do script para onde deseja utilizar
-  <a href="https://unpkg.com/@andremhirai1/calendar@1.8.3/calendar.js">https://unpkg.com/@andremhirai1/calendar@1.8.3/calendar.js</a>
+  <a href="https://unpkg.com/@andremhirai1/calendar@1.8.3/dist/js/Calendar.js">https://unpkg.com/@andremhirai1/calendar@1.8.3/dist/js/Calendar.js</a>
 - Crie uma div com uma classe identificadora. 
   
   ```
