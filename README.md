@@ -19,7 +19,8 @@ Obs: essa classe identificadora é para escopar os estilos do calendário.
             month: "mes",
             year: "ano"
         },
-        weekdays: "short"
+        weekdays: "short",
+        language: "pt-BR"
     }
     const calendar = new Calendar(".calendar", options)
 </script>
