@@ -12,19 +12,23 @@ Para fazer a integração do calendário, siga os seguintes passos:
 
 <table>
     <tr>
-        <td>url</td>
+        <td>url (String) </td>
         <td>Url para fazer a requisicao pro servidor e buscar a lista de eventos do mes</td>
     </tr>
     <tr>
-        <td>parameters</td>
+        <td>weekdays (String)</td>
+        <td>Apresentação dos dias da semana. Opções: short(3 letras) ou narrow(1 letra)</td>
+    </tr>
+    <tr>
+        <td>parameters (Objeto)</td>
         <td>Objeto que tem 2 chaves</td>
     </tr>
     <tr>
-        <td>month</td>
+        <td>month (String)</td>
         <td>Nome do parametro do mes. Default name = month</td>
     </tr>
     <tr>
-        <td>year</td>
+        <td>year (string)</td>
         <td>Nome do parametro do year. Default name = year</td>
     </tr>
 </table>
