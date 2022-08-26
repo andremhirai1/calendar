@@ -1,7 +1,7 @@
 Para fazer a integração do calendário, siga os seguintes passos:
 
 - Faça o import do script para onde deseja utilizar
-  <a href="https://unpkg.com/@andremhirai1/calendar@1.8.1/calendar.js">https://unpkg.com/@andremhirai1/calendar@1.8.1/calendar.js</a>
+  <a href="https://unpkg.com/@andremhirai1/calendar@1.8.3/calendar.js">https://unpkg.com/@andremhirai1/calendar@1.8.3/calendar.js</a>
 - Crie uma div com uma classe identificadora. 
   
   ```
@@ -35,7 +35,7 @@ Obs: essa classe identificadora é para escopar os estilos do calendário.
     </tr>
     <tr>
         <td>language (String)</td>
-        <td>Tradução do calendário para a lingua desejada. Ex: pt-BR Default: default</td>
+        <td>Tradução do calendário para a lingua desejada. Ex: pt-BR (obs: para ambientes Liferay, pode se passar o parâmetro da seguinte forma: themeDisplay.getLanguageId().replace("_","-") ) Default: default</td>
     </tr>
     <tr>
         <td>weekdays (String)</td>
