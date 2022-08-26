@@ -34,11 +34,11 @@ Obs: essa classe identificadora é para escopar os estilos do calendário.
     </tr>
     <tr>
         <td>language (String)</td>
-        <td>Tradução do calendário para a lingua desejada. Ex: pt-BR</td>
+        <td>Tradução do calendário para a lingua desejada. Ex: pt-BR Default: default</td>
     </tr>
     <tr>
         <td>weekdays (String)</td>
-        <td>Apresentação dos dias da semana. Opções: short(3 letras) ou narrow(1 letra)</td>
+        <td>Apresentação dos dias da semana. Opções: short(3 letras) ou narrow(1 letra) Default: narrow</td>
     </tr>
     <tr>
         <td>parameters (Objeto)</td>
@@ -46,10 +46,10 @@ Obs: essa classe identificadora é para escopar os estilos do calendário.
     </tr>
     <tr>
         <td>month (String)</td>
-        <td>Nome do parâmetro do mês. Default name = month</td>
+        <td>Nome do parâmetro do mês. Default= month</td>
     </tr>
     <tr>
         <td>year (string)</td>
-        <td>Nome do parâmetro do year. Default name = year</td>
+        <td>Nome do parâmetro do year. Default = year</td>
     </tr>
 </table>
