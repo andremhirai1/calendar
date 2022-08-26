@@ -1,63 +1,5 @@
-.calendar-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #E6E7E9;
-    padding: 16px 18px 10px 18px;
-}
-
-.calendar-header button {
-    background: none;
-    border-radius: 50%;
-    height: 22px;
-    width: 21px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-}
-
-.calendar-header span {
-    font-size: 1rem;
-    font-weight: 700;
-}
-
 .calendar-body {
     padding: 20px 18px 10px 18px;
-}
-
-.calendar-weekdays {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 8px;
-}
-
-.calendar-weekdays div {
-    letter-spacing: 0.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 600;
-    margin: 0 2px;
-}
-
-.calendar-days {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.calendar-days div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    margin-bottom: 5px;
-    height: 28px;
-    margin: 0 2px;
 }
 
 .calendar-days div.today {
@@ -72,10 +14,6 @@
     color: #C40008;
 }
 
-.calendar-days div.prev-date, .calendar-days div.next-date {
-    opacity: 0.5;
-    
-}
 
 .modal-calendar {
     display: none;

@@ -27,25 +27,26 @@ class Calendar {
         const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
         const nextDays = 7 - lastDayIndex;
         let days = "";
+        const styleDiv = `display: flex;align-items: center;justify-content: center;height: 28px;margin: 0 2px`;
 
         this.headerMonth.innerText = `${this.months[this.currentMonth]}/${this.currentYear}`;
         this.days.innerHTML = "";
 
 
         for (let count = firstDayIndex; count > 0; count--) {
-            days += `<div class="prev-date">${prevLastDay - count + 1}</div>`;
+            days += `<div class="prev-date" style="${styleDiv};opacity: 0.3;">${prevLastDay - count + 1}</div>`;
         }
 
         for (let count = 1; count <= lastDay; count++) {
             if (count === new Date().getDate() && this.currentMonth === new Date().getMonth() && this.currentYear === new Date().getFullYear()) {
-                days += `<div id="date_${count}" class="today">${count}</div>`;
+                days += `<div id="date_${count}" class="today" style="${styleDiv}">${count}</div>`;
             } else {
-                days += `<div id="date_${count}">${count}</div>`;
+                days += `<div id="date_${count}" style="${styleDiv}">${count}</div>`;
             }
         }
 
         for (let count = 1; count < nextDays; count++) {
-            days += `<div class="next-date">${count}</div>`;
+            days += `<div class="next-date" style="${styleDiv};opacity: 0.3;">${count}</div>`;
         }
 
         this.days.innerHTML = days;
@@ -60,6 +61,7 @@ class Calendar {
     renderHeader() {
         const _header = document.createElement("div");
         _header.classList.add("calendar-header");
+        _header.style.cssText = `display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6E7E9;padding:16px 18px 10px 18px;`;
         this.renderPrevButton(_header);
         this.renderCalendarMonth(_header);
         this.renderNextButton(_header);
@@ -137,7 +139,9 @@ class Calendar {
         this.weekdays = [];
 
         _divWeekDays.classList.add("calendar-weekdays");
+        _divWeekDays.style.cssText = `display:flex;align-items:center;justify-content:center;margin:0 2px;`;
         _divDays.classList.add("calendar-days");
+        _divDays.style.cssText = `display:flex;flex-wrap:wrap;justify-content:center;`;
 
         for (let day = 0; day < 7; day++) {
             //Random month and year just to get the order
@@ -146,7 +150,7 @@ class Calendar {
             })];
         }
         for (const day of this.weekdays) {
-            _divWeekDays.innerHTML += `<div>${day}</div>`
+            _divWeekDays.innerHTML += `<div style="display: flex;align-items: center;justify-content: center;margin: 0 2px;">${day}</div>`
         }
 
         _body.appendChild(_divWeekDays);
