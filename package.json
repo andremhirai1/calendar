@@ -1,6 +1,6 @@
 {
   "name": "@andremhirai1/calendar",
-  "version": "1.7.1",
+  "version": "1.8.1",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

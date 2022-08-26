@@ -6,6 +6,7 @@ class Calendar {
         this.options.parameters = {};
         this.options.parameters = { "month": options.parameters.month || "month", "year": options.parameters.year || "year" };
         this.options.weekdays = options.weekdays || "narrow";
+        this.options.language = options.language || "default";
         this.options.modal = options.modal ? this.renderModal() : false;
         this.calendar = document.querySelector(className);
         this.currentMonth = new Date().getMonth();
@@ -114,7 +115,7 @@ class Calendar {
         this.months = [];
 
         for (let month = 0; month < 12; month++) {
-            this.months = [...this.months, new Date(2000, month, 1).toLocaleDateString('default', {
+            this.months = [...this.months, new Date(2000, month, 1).toLocaleDateString(this.options.language, {
                 month: 'long',
             })];
         }
@@ -145,7 +146,7 @@ class Calendar {
 
         for (let day = 0; day < 7; day++) {
             //Random month and year just to get the order
-            this.weekdays = [...this.weekdays, new Date(2002, 3, day).toLocaleDateString('default', {
+            this.weekdays = [...this.weekdays, new Date(2002, 3, day).toLocaleDateString(this.options.language, {
                 weekday: this.options.weekdays,
             })];
         }
