@@ -6,9 +6,21 @@ Para fazer a integração do calendário, siga os seguintes passos:
   ```<div class="calendar"> </div>```
 - Instancie um objeto dessa forma:
 
-```<script>const calendar = new Calendar(".calendar", options)</script>```
+```
+<script>
+    const options = {
+        url: "URL-BACKEND",
+        parameters:{
+            month: "mes",
+            year: "ano"
+        },
+        weekdays: "short"
+    }
+    const calendar = new Calendar(".calendar", options)
+</script>
+```
 
-- O segundo parâmetro recebe um objeto com as possíveis opções:
+- O segundo parâmetro recebe um objeto com as possíveis opções (Esse parâmetro é opcional):
 
 <table>
     <tr>
@@ -21,14 +33,14 @@ Para fazer a integração do calendário, siga os seguintes passos:
     </tr>
     <tr>
         <td>parameters (Objeto)</td>
-        <td>Objeto que tem 2 chaves</td>
+        <td>Objeto que tem 2 parâmetros. (month & year)</td>
     </tr>
     <tr>
         <td>month (String)</td>
-        <td>Nome do parametro do mes. Default name = month</td>
+        <td>Nome do parâmetro do mês. Default name = month</td>
     </tr>
     <tr>
         <td>year (string)</td>
-        <td>Nome do parametro do year. Default name = year</td>
+        <td>Nome do parâmetro do year. Default name = year</td>
     </tr>
 </table>
